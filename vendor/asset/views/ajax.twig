@@ -1,0 +1,13 @@
+<legend id="content_title">
+	<select id='sora_id' onchange='JavaScript:Sora_Update(this.value, 0);'>
+	{% for item in SORA %}
+		<option value="{{ item.ID }}" {% if item.SELECTED %}selected{% endif %}>{{ item.SORA }}</option>
+	{% endfor %}
+	</select>
+	{{ PERPAGE }}
+</legend>
+
+{% for row in AYA %}
+	<span class="hand" ID="aya{{ row.ID }}" Name="aya{{ row.ID }}" OnClick="QuranViewExplain('aya{{ row.ID }}','{{ row.EXPLAIN }}','{{ row.TEXT2 }}');" OnMouseOver="this.style.color='red';" OnMouseOut="this.style.color='black';">{{ row.TEXT }}</span>
+{% endfor %}
+

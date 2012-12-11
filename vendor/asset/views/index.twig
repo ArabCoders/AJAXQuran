@@ -1,0 +1,77 @@
+<html dir="rtl">
+<head>
+	<title>القرآن الكريم</title>
+	<meta http-equiv=content-type content="text/html; charset=utf-8">
+	<meta name="copyright" content="2008 &copy; - arabcoders inc.">
+	<meta name="author" content="المبرمج: عبدالمحسن المنصور">
+	<meta name="keywords" content="القرآن الكريم، تفسير القرآن" />
+	<link type="text/css" rel="stylesheet" href="asset.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="asset.js"></script>
+</head>
+
+<body>
+<div align="center">
+
+<h1><font color="red"> بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ</font></h1>
+<BR clear="both" />
+
+<fieldset name="content" id="content" style="width:80%; border-color:blue;">
+	<legend id="content_title">
+		<select id='sora_id' onchange='JavaScript:Sora_Update(this.value, 0);'>
+		{% for item in SORA %}
+			<option value="{{ item.ID }}" {% if item.SELECTED %}selected{% endif %}>{{ item.SORA }}</option>
+		{% endfor %}
+		</select>
+		{{ PERPAGE }}
+	</legend>
+
+	{% for row in AYA %}
+	<span class="hand" ID="aya{{ row.ID }}" Name="aya{{ row.ID }}" OnClick="QuranViewExplain('aya{{ row.ID }}','{{ row.EXPLAIN }}','{{ row.TEXT2 }}');" OnMouseOver="this.style.color='red';" OnMouseOut="this.style.color='black';">{{ row.TEXT }}</span>
+	{% endfor %}
+</fieldset>
+<BR /><BR />
+
+<div name="txt1" id="txt1" style="width: 380px; height: 300px; display:none; position: absolute; top: 150px; left: 50px; zoom: 1"></div>
+
+<span id="searchtxt">
+	<form id="searchform" method="post">
+		<input type="checkbox" ID="SearchAll" name="SearchAll" Value="0" />بحث شامل <input type="text" name="q" ID="q" Placeholder="أكتب كلمة البحث" > <input type="button" ID="SearchBT" OnClick="tafseerSearch();" Value="بحث"><BR />
+	</form>
+</span>
+<div id="search" Name="search" style="border:1px; width: 700px; height: 300px; visibility: hidden; position: absolute; top: 150px; left: 50px; zoom: 1">
+</div>
+
+<div id="statusContainer" style="visibility: hidden;">
+	<div id="statusMessageContainer">جاري التحميل...</div>
+</div>
+
+<noscript><div id="noscript-bg"></div><div id="noscript-text"><b>هذا السكربت يطلب إستخدام<br /><a href="https://www.google.com/support/adsense/bin/answer.py?answer=12654" target="_blank">جافا سكربت</a> نرجو تفعيلها او تنزيل متصفح يدعم الجافا</b></div></noscript>
+
+<div style="direction: ltr; text-align:center" class="copyright">
+إسم التفسير: التفسير الميسر، المؤلف: مجموعة من العلماء، <a target="_blank" href="http://www.qurancomplex.org/quran/Tafseer/IntroTafseer.asp?l=arb&Tafseer=moyasar">مقدمه عن التفسير</a><BR /> المصدر : مجمع الملك فهد رحمه الله لطباعة المصحف الشريف.
+<BR /><BR />
+جميع الحقوق محفوظه لكل مسلم<BR /><a target="_blank" href="https://github.com/ArabCoders/AJAXQuran">عبدالمحسن المنصور</a>
+</div>
+
+<script type="text/javascript" language="JavaScript">
+
+$('#search').css('visibility','visible');
+$('#search').css('visibility','hidden');
+
+$('#txt1').css('block','block');
+$('#txt1').css('block','none');
+$("#searchform").submit(function() {
+
+	if ($('#q').val().length < 3) {
+		return false;
+	 }
+
+     tafseerSearch();
+
+     return false;
+});
+
+</script>
+
+</body></html>

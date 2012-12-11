@@ -1,0 +1,19 @@
+<div onClick="javaScript:clearSearch();" class="PopupClose">إغـــــــــــــــــلاق</div>
+<HR />
+نتايج البحث ({{ TOTALROWS }})<HR />
+
+<table style="font-size:0.8em;" width="100%">
+	{% for item in ITEMS %}
+	<TR>
+		<TD style="color:blue;">
+			(<A href="javascript:void(0);" OnClick="Sora_Update('{{ item.SORA_ID }}','0');">{{ item.SORA_NAME }}</a>) - <acronym title="{{ item.TEXT2 }}">{{ item.TEXT }}</acronym>
+		</TD>
+	</TR>
+	<TR>
+		<TD style="color:purple;">
+			{{ item.EXPLAIN }}
+			<hr>
+		</TD>
+	</TR>
+	{% endfor %}
+</table>

@@ -1,0 +1,14 @@
+{
+    "name": "arabcoders/quran",
+    "description": "The Holy Quran",
+    "authors": [
+        {
+            "name": "Abdul.Mohsen B. A. A.",
+            "email": "admin@arabcoders.org"
+        }
+    ],
+    "require": {
+	"twig/twig": ">=1.8,<2.0-dev"
+    },
+    "minimum-stability": "dev"
+}
